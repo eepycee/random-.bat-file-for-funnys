@@ -40,6 +40,8 @@ calc
 calc
 calc
 calc
+ECHO have 10 calcs
+timeout /t 3 /nobreak >nul
 GOTO end
 
 :end

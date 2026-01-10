@@ -1,12 +1,12 @@
 @echo off
 
 :Ask
-SET /P Input="Do you want to continue? (Y/N/q/shut/explode): "
+SET /P Input="Do you want to continue? (Y/N/q/s/e): "
 IF /I "%Input%"=="Y" goto yes
 IF /I "%Input%"=="N" goto no
 IF /I "%Input%"=="Q" goto what
-IF /I "%Input%"=="SHUT" goto shutdown
-IF /I "%Input%"=="explode" goto explode
+IF /I "%Input%"=="S" goto shutdown
+IF /I "%Input%"=="e" goto explode
 ECHO Invalid input. Please enter Y or N.
 GOTO Ask
 
@@ -75,38 +75,61 @@ goto ask
 
 :ccc
 echo HOW DID YOU GET HERE? YOU'RE NOT SUPPOSED TO BE ABLE TO GET HERE. (DELTAS)
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
+echo БЕГАТЬ
 timeout /t 2 /nobreak >nul
 exit
 
 :cccc
 timeout /t 1 /nobreak >nul
 ECHO roll your luck!
-REM Generate a random number between 1 and 100 (inclusive)
-REM In a batch file, the modulo operator needs to be doubled (%%)
-set /a chance_roll=(%RANDOM% %% 100) + 1
-
-echo Rolled a %chance_roll% out of 100.
-
-REM Check if the roll is within the 20% success range (e.g., 1 to 20)
-if %chance_roll% leq 20 (
-    echo SUCCESS! The action worked. 
+set /a "roll=%RANDOM% %% 100"
+timeout /t 1 /nobreak >nul
+ECHO You rolled a %roll%
+if %roll% lss 25 (
+    echo You are safe!
+timeout /t 3 /nobreak >nul
 goto noshutdown
 ) else (
-    echo FAILURE. The action did not work. 
-goto ASAP shutdown
+    goto ASAP shutdown
+timeout /t 1 /nobreak >nul
 )
 
 pause
 
 :noshutdown
-/shutdown a
 goto end
 
 :ASAP shutdown
 ECHO YOU FAILED!
 timeout /t 1 /nobreak >nul
-shutdown /s /f /t 0
-
+exit
 
 :explode
 echo Oh ok

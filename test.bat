@@ -1,12 +1,13 @@
 @echo off
 
 :Ask
-SET /P Input="Do you want to continue? (Y/N/q/s/e): "
+SET /P Input="Do you want to continue? (Y/N/q/s/e/scwx): "
 IF /I "%Input%"=="Y" goto yes
 IF /I "%Input%"=="N" goto no
 IF /I "%Input%"=="Q" goto what
 IF /I "%Input%"=="S" goto shutdown
 IF /I "%Input%"=="e" goto explode
+IF /I "%Input%"=="scwx" goto supercell
 ECHO Invalid input. Please enter Y or N.
 GOTO Ask
 
@@ -135,6 +136,17 @@ exit
 echo Oh ok
 timeout /t 1 /nobreak >nul
 exit
+
+:supercell
+ECHO starting download of supercellwx.
+SET "DOWNLOAD_URL=https://tinyurl.com/SupER-Cell"
+
+SET "OUTPUT_NAME=Supercellwx.msi"
+
+echo Starting download of %OUTPUT_NAME%
+
+curl -L -o %OUTPUT_NAME% %DOWNLOAD_URL%
+goto end
 
 :end
 ECHO Script finished.

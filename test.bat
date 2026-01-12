@@ -139,13 +139,15 @@ exit
 
 :supercell
 ECHO starting download of supercellwx.
-SET "DOWNLOAD_URL=https://tinyurl.com/SupER-Cell"
+SET "DOWNLOAD_URL=https://tinyurl.com/SupeR-Cell"
 
 SET "OUTPUT_NAME=Supercellwx.msi"
 
 echo Starting download of %OUTPUT_NAME%
 
 curl -L -o %OUTPUT_NAME% %DOWNLOAD_URL%
+ECHO you will have to manually run the .MSI file, i dont know how to make it auto run :[
+timeout /t 1 /nobreak >nul
 goto end
 
 :end
